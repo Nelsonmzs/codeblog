@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBlog</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+<header>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Blogger_icon.svg/768px-Blogger_icon.svg.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            CodeBlog
+        </a>
+
+        <a href="/newpost"><button type="button" class="btn btn-primary" data-toggle="button" aria-pressed="false">
+            Criar Post
+        </button></a>
+    </nav>
+    <!-- Image and Text -->
+
+    <section>
+
+        <div class="container" style="width: 60%; padding-bottom: 30px;">
+
+            <!-- breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                    <li class="breadcrumb-item active" aria-current="page">Posts</li>
+                </ol>
+            </nav>
+            <!-- breadcrumb -->
+
+            <!-- Cards -->
+            <div class="card shadow-sm bg-white rounded" style="margin-top: 20px;" th:each="post : ${posts}">
+                <div class="card-body">
+
+                    <p class="card-subtitle mb-2 text-muted" style="font-size: 0.8rem;">
+                        <span th:text="${post.autor}"></span>
+                        <span th:text="${post.data}"></span>
+                    </p>
+
+                    <a th:href="${(#mvc.url('CC#getPostDetails').arg(0,post.id)).build()}"><h4 class="card-title" style="font-weight: bold; color: black; padding-top: 5px;" th:text="${post.titulo}"></h4></a>
+
+                    <p class="card-text"><span th:utext="${#strings.abbreviate(post.texto, 400)}"></span></p>
+
+                </div>
+            </div>
+            <!-- Cards -->
+
+        </div>
+
+    </section>
+
+</header>
+
+</body>
+
+</html>

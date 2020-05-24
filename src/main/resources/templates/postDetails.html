@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeBlog</title>
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!--Icons Google-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+<header>
+
+    <!-- Image and text -->
+    <nav class="navbar navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Blogger_icon.svg/768px-Blogger_icon.svg.png" width="30" height="30" class="d-inline-block align-top" alt="">
+            CodeBlog
+        </a>
+    </nav>
+    <!-- Image and Text -->
+
+    <main>
+
+        <div class="container" style="width: 60%; padding-bottom: 30px;">
+
+            <!-- breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb" style="background-color: white; padding-left: 0px;">
+                    <li class="breadcrumb-item" aria-current="page"><a href="/posts">Posts</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Post</li>
+                </ol>
+            </nav>
+            <!-- breadcrumb -->
+
+            <article>
+
+                <h1 class="card-title" style="font-weight: bold; margin-bottom: 20px;"><span th:text="${post.titulo}"></span></h1>
+
+                <p class="card-subtitle mb-2 text-muted">
+
+                    <i class="material-icons">person_outline</i>
+                    <span th:text="${post.autor}"></span>
+
+                    <br>
+                    <i class="material-icons">date_range</i>
+                    <span th:text="${post.data}"></span>
+
+                </p>
+
+                <section>
+                    <p class="card-text" style="margin-top: 40px;"><span th:utext="${#strings.abbreviate(post.texto, 400)}"></span></p>
+                </section>
+
+            </article>
+
+        </div>
+
+    </main>
+
+</header>
+
+</body>
+
+</html>
